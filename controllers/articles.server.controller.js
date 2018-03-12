@@ -3,7 +3,21 @@ var Article = require('./../models/Article.js');
 var errorHandler = require('./errors.server.controller');
 var _ = require('lodash');
 
-module.exports.list = function(req, res) {
+module.exports.listview= function(req, res)
+{
+  
+  
+  res.render('./../public/views/article/all.ejs',
+  {
+    user: req.user|| null,
+    request: req
+    
+    
+  });
+};
+
+
+module.exports.listview = function(req, res) {
   Article.find(function(err, data) {
     if (err) {
       return res.status(400).send({
