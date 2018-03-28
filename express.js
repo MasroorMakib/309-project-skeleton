@@ -51,7 +51,7 @@ app.use(passport.initialize());
 		require(path.resolve(routePath))(app);
 	});
 // require('./routes/users.server.routes.js')(app);
-// require('./routes/article.server.routes.js')(app);
+// require('./routes/product.server.routes.js')(app);
 
 
   return app;

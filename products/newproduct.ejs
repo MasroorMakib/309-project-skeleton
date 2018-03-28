@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title> new product entry form </title>
+        
+    </head>
+    
+    
+    <body>
+        <h1>entry new product</h1>
+        <p>name:</p>
+        <input type="text" id="name"/><br/>
+        <p>price:</p>
+                <input type="text" id="price"/><br/>
+                
+                   <p>quantity:</p>
+                    <input type="text" id="quantity"/><br/>
+                     
+       <p>description:</p> 
+       <textarea id="description"> add Description </textarea><br/>
+       <button id="submit">enter</button>
+       <script src= "/lib/jquery/dist/jquery.min.js"></script>
+        <script>
+            var newProduct = {name:"",desc:"",price:"",quantity:""};
+            $('#submit').click(function(){
+                console.log('submit clicked');
+                newProduct.name=$('#name').val();
+                newProduct.description=$('#description').val();
+                $.ajax({
+                    
+                    method:"post",
+                    url:"/api/products",
+                    data: newProduct
+                }).done(function(response){
+                    console.log(response);
+                }).fail(function(response){
+                    console.log(response.response)
+                    {('#error').text(JSON.parse(response.responseText).message);
+                    console.log(response.responseText);
+                });
+            }
+        </script>        
+
+        
+        
+        
+    </body>
+</html>
